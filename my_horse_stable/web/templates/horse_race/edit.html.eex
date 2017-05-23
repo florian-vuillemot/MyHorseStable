@@ -1,0 +1,6 @@
+<h2>Edit horse race</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: horse_race_path(@conn, :update, @horse_race) %>
+
+<%= link "Back", to: horse_race_path(@conn, :index) %>

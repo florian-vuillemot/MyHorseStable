@@ -1,0 +1,18 @@
+<h2>Show horse race</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @horse_race.name %>
+  </li>
+
+  <li>
+    <strong>Definition:</strong>
+    <%= @horse_race.definition %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: horse_race_path(@conn, :edit, @horse_race) %>
+<%= link "Back", to: horse_race_path(@conn, :index) %>

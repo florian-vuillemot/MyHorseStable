@@ -1,0 +1,28 @@
+<h2>Show dentist</h2>
+
+<ul>
+
+  <li>
+    <strong>Nature of the intervention:</strong>
+    <%= @dentist.nature_of_the_intervention %>
+  </li>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @dentist.date %>
+  </li>
+
+  <li>
+    <strong>Observations:</strong>
+    <%= @dentist.observations %>
+  </li>
+
+  <li>
+    <strong>Payment:</strong>
+    <%= @dentist.payment_id %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: dentist_path(@conn, :edit, @dentist) %>
+<%= link "Back", to: dentist_path(@conn, :index) %>

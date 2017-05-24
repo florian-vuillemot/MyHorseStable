@@ -1,0 +1,32 @@
+<h2>Listing dentists</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nature of the intervention</th>
+      <th>Date</th>
+      <th>Observations</th>
+      <th>Payment</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for dentist <- @dentists do %>
+    <tr>
+      <td><%= dentist.nature_of_the_intervention %></td>
+      <td><%= dentist.date %></td>
+      <td><%= dentist.observations %></td>
+      <td><%= dentist.payment_id %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: dentist_path(@conn, :show, dentist), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: dentist_path(@conn, :edit, dentist), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: dentist_path(@conn, :delete, dentist), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New dentist", to: dentist_path(@conn, :new) %>

@@ -1,0 +1,32 @@
+<h2>Listing horses</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Birthday date</th>
+      <th>Nationality</th>
+      <th>Race</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for horse <- @horses do %>
+    <tr>
+      <td><%= horse.name %></td>
+      <td><%= horse.birthday_date %></td>
+      <td><%= horse.nationality %></td>
+      <td><%= horse.race_id %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: horse_path(@conn, :show, horse), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: horse_path(@conn, :edit, horse), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: horse_path(@conn, :delete, horse), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New horse", to: horse_path(@conn, :new) %>

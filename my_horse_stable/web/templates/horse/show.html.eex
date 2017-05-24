@@ -1,0 +1,28 @@
+<h2>Show horse</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @horse.name %>
+  </li>
+
+  <li>
+    <strong>Birthday date:</strong>
+    <%= @horse.birthday_date %>
+  </li>
+
+  <li>
+    <strong>Nationality:</strong>
+    <%= @horse.nationality %>
+  </li>
+
+  <li>
+    <strong>Race:</strong>
+    <%= @horse.race_id %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: horse_path(@conn, :edit, @horse) %>
+<%= link "Back", to: horse_path(@conn, :index) %>

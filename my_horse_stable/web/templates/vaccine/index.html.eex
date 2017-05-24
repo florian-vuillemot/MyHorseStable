@@ -1,0 +1,30 @@
+<h2>Listing vaccines</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Type of vaccine</th>
+      <th>Payment</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for vaccine <- @vaccines do %>
+    <tr>
+      <td><%= vaccine.date %></td>
+      <td><%= vaccine.type_of_vaccine %></td>
+      <td><%= vaccine.payment_id %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: vaccine_path(@conn, :show, vaccine), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: vaccine_path(@conn, :edit, vaccine), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: vaccine_path(@conn, :delete, vaccine), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New vaccine", to: vaccine_path(@conn, :new) %>

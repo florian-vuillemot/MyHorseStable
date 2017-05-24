@@ -1,0 +1,23 @@
+<h2>Show vaccine</h2>
+
+<ul>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @vaccine.date %>
+  </li>
+
+  <li>
+    <strong>Type of vaccine:</strong>
+    <%= @vaccine.type_of_vaccine %>
+  </li>
+
+  <li>
+    <strong>Payment:</strong>
+    <%= @vaccine.payment_id %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: vaccine_path(@conn, :edit, @vaccine) %>
+<%= link "Back", to: vaccine_path(@conn, :index) %>

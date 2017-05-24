@@ -1,0 +1,33 @@
+<h2>Show practitioner</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @practitioner.name %>
+  </li>
+
+  <li>
+    <strong>Address:</strong>
+    <%= @practitioner.address %>
+  </li>
+
+  <li>
+    <strong>Phone number:</strong>
+    <%= @practitioner.phone_number %>
+  </li>
+
+  <li>
+    <strong>Mail:</strong>
+    <%= @practitioner.mail %>
+  </li>
+
+  <li>
+    <strong>Work name:</strong>
+    <%= @practitioner.work_name %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: practitioner_path(@conn, :edit, @practitioner) %>
+<%= link "Back", to: practitioner_path(@conn, :index) %>

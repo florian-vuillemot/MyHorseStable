@@ -1,35 +1,38 @@
 <div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}", name: "Phoenix!" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+  <h2>Welcome to My Horse Stable</h2>
+  <!--<p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>-->
 </div>
 
 <div class="row marketing">
   <div class="col-lg-6">
-    <h4>Resources</h4>
+    <h4>Horse</h4>
     <ul>
       <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
+        <%= link "Horse race", to: horse_race_path(@conn, :index) %>
       </li>
       <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
+        <%= link "Horse", to: horse_path(@conn, :index) %>
       </li>
       <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
+        <%= link "Dentist", to: dentist_path(@conn, :index) %>
+      </li>
+      <li>
+        <%= link "Osteopath", to: osteopath_path(@conn, :index) %>
+      </li>
+      <li>
+        <%= link "Shoeing", to: shoeing_path(@conn, :index) %>
       </li>
     </ul>
   </div>
 
   <div class="col-lg-6">
-    <h4>Help</h4>
+    <h4>Other</h4>
     <ul>
       <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
+        <%= link "Customers", to: customer_path(@conn, :index) %>
       </li>
       <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
+        <%= link "Practitioners", to: practitioner_path(@conn, :index) %>
       </li>
     </ul>
   </div>

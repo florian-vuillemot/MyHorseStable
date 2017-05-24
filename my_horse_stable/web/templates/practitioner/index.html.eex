@@ -1,0 +1,34 @@
+<h2>Listing practitioners</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone number</th>
+      <th>Mail</th>
+      <th>Work name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for practitioner <- @practitioners do %>
+    <tr>
+      <td><%= practitioner.name %></td>
+      <td><%= practitioner.address %></td>
+      <td><%= practitioner.phone_number %></td>
+      <td><%= practitioner.mail %></td>
+      <td><%= practitioner.work_name %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: practitioner_path(@conn, :show, practitioner), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: practitioner_path(@conn, :edit, practitioner), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: practitioner_path(@conn, :delete, practitioner), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New practitioner", to: practitioner_path(@conn, :new) %>

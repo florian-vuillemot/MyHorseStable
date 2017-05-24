@@ -1,0 +1,6 @@
+<h2>Edit practitioner</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: practitioner_path(@conn, :update, @practitioner) %>
+
+<%= link "Back", to: practitioner_path(@conn, :index) %>

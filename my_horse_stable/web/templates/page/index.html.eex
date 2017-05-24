@@ -22,6 +22,12 @@
       <li>
         <%= link "Shoeing", to: shoeing_path(@conn, :index) %>
       </li>
+      <li>
+        <%= link "Vaccine", to: vaccine_path(@conn, :index) %>
+      </li>
+      <li>
+        <%= link "Veterinary care", to: veterinary_care_path(@conn, :index) %>
+      </li>
     </ul>
   </div>
 

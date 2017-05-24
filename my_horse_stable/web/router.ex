@@ -19,6 +19,7 @@ defmodule MyHorseStable.Router do
     get "/", PageController, :index
     
     resources "/horse_race", HorseRaceController
+    resources "/customers", CustomerController
   end
 
   # Other scopes may use custom stacks.

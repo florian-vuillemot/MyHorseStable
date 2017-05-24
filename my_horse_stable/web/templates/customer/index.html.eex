@@ -1,0 +1,35 @@
+<h2>Listing customers</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Last name</th>
+      <th>First name</th>
+      <th>Email</th>
+      <th>Phone number</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for customer <- @customers do %>
+    <tr>
+      <td><%= customer.last_name %></td>
+      <td><%= customer.first_name %></td>
+      <td><%= customer.email %></td>
+      <td><%= customer.phone_number %></td>
+      <td id="naiveDate">
+        <script>document.write(convertNaiveDateToString("<%= customer.birthday_date %>"));</script>
+      </td>
+
+      <td class="text-right">
+        <%= link "Show", to: customer_path(@conn, :show, customer), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: customer_path(@conn, :edit, customer), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: customer_path(@conn, :delete, customer), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New customer", to: customer_path(@conn, :new) %>

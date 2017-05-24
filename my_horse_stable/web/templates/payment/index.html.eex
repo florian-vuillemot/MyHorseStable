@@ -1,0 +1,30 @@
+<h2>Listing payments</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Date</th>
+      <th>Libel</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for payment <- @payments do %>
+    <tr>
+      <td><%= payment.type %></td>
+      <td><%= payment.date %></td>
+      <td><%= payment.libel %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: payment_path(@conn, :show, payment), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: payment_path(@conn, :edit, payment), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: payment_path(@conn, :delete, payment), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New payment", to: payment_path(@conn, :new) %>

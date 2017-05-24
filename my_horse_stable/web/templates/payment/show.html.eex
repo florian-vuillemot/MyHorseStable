@@ -1,0 +1,23 @@
+<h2>Show payment</h2>
+
+<ul>
+
+  <li>
+    <strong>Type:</strong>
+    <%= @payment.type %>
+  </li>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @payment.date %>
+  </li>
+
+  <li>
+    <strong>Libel:</strong>
+    <%= @payment.libel %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: payment_path(@conn, :edit, @payment) %>
+<%= link "Back", to: payment_path(@conn, :index) %>

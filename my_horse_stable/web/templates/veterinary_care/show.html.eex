@@ -1,0 +1,68 @@
+<h2>Show veterinary care</h2>
+
+<ul>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @veterinary_care.date %>
+  </li>
+
+  <li>
+    <strong>Nature of the intervention:</strong>
+    <%= @veterinary_care.nature_of_the_intervention %>
+  </li>
+
+  <li>
+    <strong>Observations:</strong>
+    <%= @veterinary_care.observations %>
+  </li>
+
+  <li>
+    <strong>Nature of care:</strong>
+    <%= @veterinary_care.nature_of_care %>
+  </li>
+
+  <li>
+    <strong>Hospitalization:</strong>
+    <%= @veterinary_care.hospitalization %>
+  </li>
+
+  <li>
+    <strong>Hospitalization begin:</strong>
+    <%= @veterinary_care.hospitalization_begin %>
+  </li>
+
+  <li>
+    <strong>Hospitalization end:</strong>
+    <%= @veterinary_care.hospitalization_end %>
+  </li>
+
+  <li>
+    <strong>Radio:</strong>
+    <%= @veterinary_care.radio %>
+  </li>
+
+  <li>
+    <strong>Ultrasound:</strong>
+    <%= @veterinary_care.ultrasound %>
+  </li>
+
+  <li>
+    <strong>Date of the sending the declaration of loss:</strong>
+    <%= @veterinary_care.date_of_the_sending_the_declaration_of_loss %>
+  </li>
+
+  <li>
+    <strong>Reimbursement amount:</strong>
+    <%= @veterinary_care.reimbursement_amount %>
+  </li>
+
+  <li>
+    <strong>Reimbursement date:</strong>
+    <%= @veterinary_care.reimbursement_date %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: veterinary_care_path(@conn, :edit, @veterinary_care) %>
+<%= link "Back", to: veterinary_care_path(@conn, :index) %>

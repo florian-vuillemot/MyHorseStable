@@ -1,0 +1,6 @@
+<h2>Edit veterinary care</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: veterinary_care_path(@conn, :update, @veterinary_care) %>
+
+<%= link "Back", to: veterinary_care_path(@conn, :index) %>

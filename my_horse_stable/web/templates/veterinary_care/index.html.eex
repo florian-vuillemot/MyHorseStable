@@ -1,0 +1,48 @@
+<h2>Listing veterinarys care</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Nature of the intervention</th>
+      <th>Observations</th>
+      <th>Nature of care</th>
+      <th>Hospitalization</th>
+      <th>Hospitalization begin</th>
+      <th>Hospitalization end</th>
+      <th>Radio</th>
+      <th>Ultrasound</th>
+      <th>Date of the sending the declaration of loss</th>
+      <th>Reimbursement amount</th>
+      <th>Reimbursement date</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for veterinary_care <- @veterinarys_care do %>
+    <tr>
+      <td><%= veterinary_care.date %></td>
+      <td><%= veterinary_care.nature_of_the_intervention %></td>
+      <td><%= veterinary_care.observations %></td>
+      <td><%= veterinary_care.nature_of_care %></td>
+      <td><%= veterinary_care.hospitalization %></td>
+      <td><%= veterinary_care.hospitalization_begin %></td>
+      <td><%= veterinary_care.hospitalization_end %></td>
+      <td><%= veterinary_care.radio %></td>
+      <td><%= veterinary_care.ultrasound %></td>
+      <td><%= veterinary_care.date_of_the_sending_the_declaration_of_loss %></td>
+      <td><%= veterinary_care.reimbursement_amount %></td>
+      <td><%= veterinary_care.reimbursement_date %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: veterinary_care_path(@conn, :show, veterinary_care), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: veterinary_care_path(@conn, :edit, veterinary_care), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: veterinary_care_path(@conn, :delete, veterinary_care), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New veterinary care", to: veterinary_care_path(@conn, :new) %>

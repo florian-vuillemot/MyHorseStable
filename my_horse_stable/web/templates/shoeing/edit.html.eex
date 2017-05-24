@@ -1,0 +1,6 @@
+<h2>Edit shoeing</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: shoeing_path(@conn, :update, @shoeing) %>
+
+<%= link "Back", to: shoeing_path(@conn, :index) %>

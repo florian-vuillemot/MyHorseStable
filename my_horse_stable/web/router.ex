@@ -23,6 +23,8 @@ defmodule MyHorseStable.Router do
     resources "/horses", HorseController
     resources "/payments", PaymentController
     resources "/dentists", DentistController
+    resources "/osteopaths", OsteopathController
+    resources "/shoeings", ShoeingController
   end
 
   # Other scopes may use custom stacks.

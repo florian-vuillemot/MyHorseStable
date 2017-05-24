@@ -1,0 +1,32 @@
+<h2>Listing shoeings</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nature of the intervention</th>
+      <th>Date</th>
+      <th>Observations</th>
+      <th>Payment</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for shoeing <- @shoeings do %>
+    <tr>
+      <td><%= shoeing.nature_of_the_intervention %></td>
+      <td><%= shoeing.date %></td>
+      <td><%= shoeing.observations %></td>
+      <td><%= shoeing.payment_id %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: shoeing_path(@conn, :show, shoeing), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: shoeing_path(@conn, :edit, shoeing), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: shoeing_path(@conn, :delete, shoeing), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New shoeing", to: shoeing_path(@conn, :new) %>

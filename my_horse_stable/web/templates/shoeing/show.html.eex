@@ -1,0 +1,28 @@
+<h2>Show shoeing</h2>
+
+<ul>
+
+  <li>
+    <strong>Nature of the intervention:</strong>
+    <%= @shoeing.nature_of_the_intervention %>
+  </li>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @shoeing.date %>
+  </li>
+
+  <li>
+    <strong>Observations:</strong>
+    <%= @shoeing.observations %>
+  </li>
+
+  <li>
+    <strong>Payment:</strong>
+    <%= @shoeing.payment_id %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: shoeing_path(@conn, :edit, @shoeing) %>
+<%= link "Back", to: shoeing_path(@conn, :index) %>

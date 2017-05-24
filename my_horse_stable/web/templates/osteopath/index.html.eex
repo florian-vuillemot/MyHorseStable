@@ -1,0 +1,32 @@
+<h2>Listing osteopaths</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nature of the intervention</th>
+      <th>Date</th>
+      <th>Observations</th>
+      <th>Payment</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for osteopath <- @osteopaths do %>
+    <tr>
+      <td><%= osteopath.nature_of_the_intervention %></td>
+      <td><%= osteopath.date %></td>
+      <td><%= osteopath.observations %></td>
+      <td><%= osteopath.payment_id %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: osteopath_path(@conn, :show, osteopath), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: osteopath_path(@conn, :edit, osteopath), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: osteopath_path(@conn, :delete, osteopath), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New osteopath", to: osteopath_path(@conn, :new) %>

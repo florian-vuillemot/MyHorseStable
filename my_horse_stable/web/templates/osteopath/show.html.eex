@@ -1,0 +1,28 @@
+<h2>Show osteopath</h2>
+
+<ul>
+
+  <li>
+    <strong>Nature of the intervention:</strong>
+    <%= @osteopath.nature_of_the_intervention %>
+  </li>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @osteopath.date %>
+  </li>
+
+  <li>
+    <strong>Observations:</strong>
+    <%= @osteopath.observations %>
+  </li>
+
+  <li>
+    <strong>Payment:</strong>
+    <%= @osteopath.payment_id %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: osteopath_path(@conn, :edit, @osteopath) %>
+<%= link "Back", to: osteopath_path(@conn, :index) %>

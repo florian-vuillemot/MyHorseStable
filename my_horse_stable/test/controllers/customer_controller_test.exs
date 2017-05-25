@@ -2,7 +2,7 @@ defmodule MyHorseStable.CustomerControllerTest do
   use MyHorseStable.ConnCase
 
   alias MyHorseStable.Customer
-  @valid_attrs %{email: "some content", first_name: "some content", last_name: "some content", phone_number: "some content"}
+  @valid_attrs %{email: "some content", first_name: "some content", last_name: "some content", phone_number: "some content", birthday_date: "1995-05-03 00:00:00"}
   @invalid_attrs %{}
 
   test "lists all entries on index", %{conn: conn} do

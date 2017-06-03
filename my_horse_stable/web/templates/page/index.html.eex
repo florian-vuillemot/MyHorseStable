@@ -1,45 +1,81 @@
-<div class="jumbotron">
-  <h2>Welcome to My Horse Stable</h2>
-  <!--<p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>-->
 </div>
+<!-- Header/Home -->
+<header class="w3-container w3-padding-32 w3-center w3-white" id="home">
+  <h1 class="w3-jumbo">My Horse Stable</h1>
+  <img src="<%= static_path(@conn, "/images/ecurie.jpg") %>" alt="Ecurie" class="w3-image" width="992" height="1108">
+</header>
 
-<div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Horse</h4>
-    <ul>
-      <li>
-        <%= link "Horse race", to: horse_race_path(@conn, :index) %>
-      </li>
-      <li>
-        <%= link "Horse", to: horse_path(@conn, :index) %>
-      </li>
-      <li>
-        <%= link "Dentist", to: dentist_path(@conn, :index) %>
-      </li>
-      <li>
-        <%= link "Osteopath", to: osteopath_path(@conn, :index) %>
-      </li>
-      <li>
-        <%= link "Shoeing", to: shoeing_path(@conn, :index) %>
-      </li>
-      <li>
-        <%= link "Vaccine", to: vaccine_path(@conn, :index) %>
-      </li>
-      <li>
-        <%= link "Veterinary care", to: veterinary_care_path(@conn, :index) %>
-      </li>
-    </ul>
+<div class="container">
+  <!-- About Section -->
+  <div class="w3-content w3-justify w3-padding-64" id="about"> <!-- w3-text-grey -->
+    <h2> <!-- class="w3-text-light-grey" -->About</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <p>
+      Free web site for assist all horse stable owner.
+    </p>
+    <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i>100% made in France</p>
+    <!-- End About Section -->
   </div>
 
-  <div class="col-lg-6">
-    <h4>Other</h4>
-    <ul>
-      <li>
-        <%= link "Customers", to: customer_path(@conn, :index) %>
-      </li>
-      <li>
-        <%= link "Practitioners", to: practitioner_path(@conn, :index) %>
-      </li>
-    </ul>
+  <div class="row marketing">
+    <div class="col-lg-6">
+      <h4>Horse</h4>
+      <ul>
+        <li>
+          <%= link "Horse race", to: horse_race_path(@conn, :index) %>
+        </li>
+        <li>
+          <%= link "Horse", to: horse_path(@conn, :index) %>
+        </li>
+        <li>
+          <%= link "Dentist", to: dentist_path(@conn, :index) %>
+        </li>
+        <li>
+          <%= link "Osteopath", to: osteopath_path(@conn, :index) %>
+        </li>
+        <li>
+          <%= link "Shoeing", to: shoeing_path(@conn, :index) %>
+        </li>
+        <li>
+          <%= link "Vaccine", to: vaccine_path(@conn, :index) %>
+        </li>
+        <li>
+          <%= link "Veterinary care", to: veterinary_care_path(@conn, :index) %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-lg-6">
+      <h4>Other</h4>
+      <ul>
+        <li>
+          <%= link "Customers", to: customer_path(@conn, :index) %>
+        </li>
+        <li>
+          <%= link "Practitioners", to: practitioner_path(@conn, :index) %>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
+
+
+  <!-- Contact Section -->
+  <div class="w3-padding-64 w3-content" id="contact"> <!--  w3-text-grey -->
+    <h2>Contact Me</h2> <!--  class="w3-text-light-grey" -->
+    <hr style="width:200px" class="w3-opacity">
+
+    <p>Question ? Bug ? Idea ? Send me a message:</p>
+
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Email" required name="Email"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Subject" required name="Subject"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Message" required name="Message"></p>
+      <p>
+        <button class="w3-button w3-grey w3-padding-large" type="submit">
+          <i class="fa fa-paper-plane"></i> SEND MESSAGE
+        </button>
+      </p>
+    </form>
+    <!-- End Contact Section -->
+  </div>

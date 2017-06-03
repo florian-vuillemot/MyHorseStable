@@ -8,28 +8,111 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello MyHorseStable!</title>
+    <title>My Horse Stable</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/w3.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/googlefont.css") %>">
+
+    <style>
+      body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+      .w3-row-padding img {margin-bottom: 12px}
+      /* Set the width of the sidebar to 120px */
+      .w3-sidebar {width: 120px;background: #222;}
+      /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+      #main {margin-left: 120px}
+      /* Remove margins from "page content" on small screens */
+      @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    </style>
   </head>
 
   <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
 
-  <body>
-    <div class="container">
-      <header class="header">
-        <!--
-          <nav role="navigation">
-            <ul class="nav nav-pills pull-right">
-              <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-            </ul>
-          </nav>
-        -->
-        <div style="text-align:center">
-          <h1>My horse stable</h1>
-          <span class="logo"></span>
-        </div>
-      </header>
+  <body class="w3-white">
 
+  <!-- Icon Bar (Sidebar - hidden on small screens) -->
+  <nav class="w3-sidebar w3-black w3-bar-block w3-small w3-hide-small w3-center">
+    <!-- Avatar image in top left corner -->
+    <img src="<%= static_path(@conn, "/images/logo.jpg") %>" style="width:100%" alt="Logo horse stable">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-grey" onmouseenter="showChoice(this, 'Go home', '#about')" onmouseleave="leaveChoice()" id='home'>
+      <i class="fa fa-home w3-xxlarge"></i>
+      <p>HOME</p>
+    </a>
+    <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-grey" onmouseenter="showChoice(this, 'New horse', '#about', 'List horses', '#about')" onmouseleave="leaveChoice()" id='house'>
+      <i class="fa fa-user w3-xxlarge"></i>
+      <p>HORSE</p>
+    </a>
+    <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-grey" onmouseenter="showChoice(this, 'Dentiste', '#about', 'Osteopath', '#about', 'Veterinary care', '#', 'Shoeing', '#about', 'Vaccine', '#')" onmouseleave="leaveChoice()" id='practionner'>
+      <i class="fa fa-eye w3-xxlarge"></i>
+      <p>PRACTICIEN</p>
+    </a>
+      <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-grey" onmouseenter="showChoice(this, 'New customer', '#about', 'New Practisient', '#about', null, null, 'Customers', '#about','Practisents', '#about')" onmouseleave="leaveChoice()" id='customers'>
+      <i class="fa fa-envelope w3-xxlarge"></i>
+      <p>CUSTOMERS</p>
+    </a>
+  </nav>
+
+  <!-- Navbar on small screens (Hidden on medium and large screens) -->
+  <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+    <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+      <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+      <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">HORSE</a>
+      <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">PRACTICIEN</a>
+      <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CUSTOMERS</a>
+    </div>
+  </div>
+
+  <!-- Page Content -->
+  <div class="w3-padding-large" id="main">
+
+    <div id="selector" style="display: none"  onmouseenter="onZone()" onmouseleave="leaveChoice()">
+      <table>
+        <tr>
+          <td>
+            <a href="#about" class="w3-button w3-padding-large w3-hover-grey" id="img_left_top">
+              <i class="fa fa-user w3-xxlarge"></i>
+              <p id="p_img_left_top"></p>
+            </a>
+          </td>
+          <td>
+            <a href="#about" class="w3-button w3-padding-large w3-hover-grey" id="img_right_top">
+              <i class="fa fa-user w3-xxlarge"></i>
+              <p id="p_img_right_top"></p>
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#about" class="w3-button w3-padding-large w3-hover-grey" id="img_left_middle">
+              <i class="fa fa-user w3-xxlarge"></i>
+              <p id="p_img_left_middle"></p>
+            </a>
+          </td>
+          <td>
+            <a href="#about" class="w3-button w3-padding-large w3-hover-grey" id="img_right_middle">
+              <i class="fa fa-user w3-xxlarge"></i>
+              <p id="p_img_right_middle"></p>
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#about" class="w3-button w3-padding-large w3-hover-grey" id="img_left_bottom">
+              <i class="fa fa-user w3-xxlarge"></i>
+              <p id="p_img_left_bottom"></p>
+            </a>
+          </td>
+          <td>
+            <a href="#about" class="w3-button w3-padding-large w3-hover-grey" id="img_right_bottom">
+              <i class="fa fa-user w3-xxlarge"></i>
+              <p id="p_img_right_bottom"></p>
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
@@ -38,5 +121,86 @@
       </main>
 
     </div> <!-- /container -->
+
+    <!-- END PAGE CONTENT -->
+  </div>
+
   </body>
 </html>
+
+
+<script type="text/javascript">
+  let selector = document.getElementById('selector');
+  let count = 0;
+
+  function onZone(){
+      count++;
+      if (count > 0){
+          selector.style.display = "inline";
+      }
+  }
+
+  function showChoice(img,  txt_left_top = null, href_left_top = null,
+                            txt_left_middle = null, href_left_middle = null,
+                            txt_left_bottom = null, href_left_bottom = null,
+                            txt_right_top = null, href_right_top = null,
+                            txt_right_middle = null, href_right_middle = null,
+                            txt_right_bottom = null, href_right_bottom = null
+                      )
+  {
+      count++;
+      selector.style.display = "inline";
+
+      document.getElementById("img_left_top").style.display = txt_left_top ? "block" : "none";
+      document.getElementById("img_right_top").style.display = txt_right_top ? "block" : "none";
+      document.getElementById("img_left_middle").style.display = txt_left_middle ? "block" : "none";
+      document.getElementById("img_right_middle").style.display = txt_right_middle ? "block" : "none";
+
+      document.getElementById("img_left_bottom").style.display = txt_left_bottom ? "block" : "none";
+      document.getElementById("img_right_bottom").style.display = txt_right_bottom ? "block" : "none";
+
+      document.getElementById("img_left_top").href = href_left_top;
+      document.getElementById("img_right_top").href = href_right_top;
+      document.getElementById("img_left_middle").href = href_left_middle;
+      document.getElementById("img_right_middle").href = href_right_middle;
+      document.getElementById("img_left_bottom").href = href_left_bottom;
+      document.getElementById("img_right_bottom").href = href_right_bottom;
+
+      document.getElementById("p_img_left_top").innerHTML = txt_left_top;
+      document.getElementById("p_img_right_top").innerHTML = txt_right_top;
+      document.getElementById("p_img_left_middle").innerHTML = txt_left_middle;
+      document.getElementById("p_img_right_middle").innerHTML = txt_right_middle;
+      document.getElementById("p_img_left_bottom").innerHTML = txt_left_bottom;
+      document.getElementById("p_img_right_bottom").innerHTML = txt_right_bottom;
+
+
+      const sizeImg = document.getElementById("img_left_top").getBoundingClientRect().height;
+      let placeImg = img.getBoundingClientRect();
+      let nb_div =  Number(txt_left_top!==null) + Number(txt_right_top!==null) +
+                    Number(txt_left_middle!==null) + Number(txt_right_middle!==null) +
+                    Number(txt_left_bottom!==null) + Number(txt_right_bottom!==null);
+
+      if ((nb_div & 1) === 0){
+          nb_div = placeImg.height >> 1;
+      }
+      else if (nb_div > 2){
+          const BEAUTIFUL_PADDING_FOR_THREE_BALISES = 5;
+          nb_div = sizeImg + BEAUTIFUL_PADDING_FOR_THREE_BALISES;
+      }
+      else{
+        nb_div = 0;
+      }
+
+      const BEAUTIFUL_PADDING = 15;
+      selector.style.position = "fixed";
+      selector.style.top = (placeImg.top - nb_div - BEAUTIFUL_PADDING) + "px";
+      selector.style.left = (placeImg.left + placeImg.width) + "px";
+  }
+
+  function leaveChoice(){
+      count--;
+      if (0 === count){
+          selector.style.display = "none";
+      }
+  }
+</script>

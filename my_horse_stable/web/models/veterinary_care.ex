@@ -14,6 +14,8 @@ defmodule MyHorseStable.VeterinaryCare do
     field :date_of_the_sending_the_declaration_of_loss, Ecto.DateTime
     field :reimbursement_amount, :float
     field :reimbursement_date, Ecto.DateTime
+    belongs_to :horse, MyHorseStable.Horse
+    belongs_to :practitioner, MyHorseStable.Practitioner
 
     timestamps()
   end
@@ -23,7 +25,7 @@ defmodule MyHorseStable.VeterinaryCare do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:date, :nature_of_the_intervention, :observations, :nature_of_care, :hospitalization, :hospitalization_begin, :hospitalization_end, :radio, :ultrasound, :date_of_the_sending_the_declaration_of_loss, :reimbursement_amount, :reimbursement_date])
-    |> validate_required([:date, :nature_of_the_intervention, :observations, :nature_of_care, :hospitalization, :hospitalization_begin, :hospitalization_end, :radio, :ultrasound, :date_of_the_sending_the_declaration_of_loss, :reimbursement_amount, :reimbursement_date])
+    |> cast(params, [:date, :nature_of_the_intervention, :observations, :nature_of_care, :hospitalization, :hospitalization_begin, :hospitalization_end, :radio, :ultrasound, :date_of_the_sending_the_declaration_of_loss, :reimbursement_amount, :reimbursement_date, :horse_id, :practitioner_id])
+    |> validate_required([:date, :nature_of_the_intervention, :observations, :nature_of_care, :hospitalization, :hospitalization_begin, :hospitalization_end, :radio, :ultrasound, :date_of_the_sending_the_declaration_of_loss, :reimbursement_amount, :reimbursement_date, :horse_id, :practitioner_id])
   end
 end

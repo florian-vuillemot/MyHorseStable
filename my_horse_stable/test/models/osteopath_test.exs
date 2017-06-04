@@ -3,7 +3,7 @@ defmodule MyHorseStable.OsteopathTest do
 
   alias MyHorseStable.Osteopath
 
-  @valid_attrs %{date: %{day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010}, nature_of_the_intervention: "some content", observations: "some content"}
+  @valid_attrs %{date: %{day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010}, nature_of_the_intervention: "some content", observations: "some content", practitioner_id: 1, horse_id: 1}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

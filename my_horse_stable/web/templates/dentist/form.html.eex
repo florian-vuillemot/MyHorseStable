@@ -24,6 +24,20 @@
   </div>
 
   <div class="form-group">
+    <%= label f, :horse_id, class: "control-label" %>
+    <%= select(f, :horse_id, @horses |> Enum.map(fn h -> {h.name, h.id} end), prompt: "Choose horse", class: "form-control") %>
+    <%= error_tag f, :horse_id %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :practitioner_id, class: "control-label" %>
+    <%= select(f, :practitioner_id, @practitioner |> Enum.map(fn p -> {p.name, p.id} end), prompt: "Practitioner", class: "form-control") %>
+    <%= error_tag f, :practitioner_id %>
+  </div>
+
+
+  <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>
+
 <% end %>

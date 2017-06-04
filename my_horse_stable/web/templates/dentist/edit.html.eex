@@ -1,6 +1,6 @@
 <h2>Edit dentist</h2>
 
-<%= render "form.html", changeset: @changeset,
+<%= render "form.html", changeset: @changeset, horses: @horses, practitioner: @practitioner,
                         action: dentist_path(@conn, :update, @dentist) %>
 
 <%= link "Back", to: dentist_path(@conn, :index) %>

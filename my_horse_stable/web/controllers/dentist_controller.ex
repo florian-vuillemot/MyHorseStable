@@ -2,6 +2,8 @@ defmodule MyHorseStable.DentistController do
   use MyHorseStable.Web, :controller
 
   alias MyHorseStable.Dentist
+  alias MyHorseStable.Horse
+  alias MyHorseStable.Practitioner
 
   def index(conn, _params) do
     dentists = Repo.all(Dentist)
@@ -10,7 +12,7 @@ defmodule MyHorseStable.DentistController do
 
   def new(conn, _params) do
     changeset = Dentist.changeset(%Dentist{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, horses: get_horses(), practitioner: get_practitioner())
   end
 
   def create(conn, %{"dentist" => dentist_params}) do
@@ -22,7 +24,7 @@ defmodule MyHorseStable.DentistController do
         |> put_flash(:info, "Dentist created successfully.")
         |> redirect(to: dentist_path(conn, :index))
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "new.html", changeset: changeset, horses: get_horses(), practitioner: get_practitioner())
     end
   end
 
@@ -34,7 +36,7 @@ defmodule MyHorseStable.DentistController do
   def edit(conn, %{"id" => id}) do
     dentist = Repo.get!(Dentist, id)
     changeset = Dentist.changeset(dentist)
-    render(conn, "edit.html", dentist: dentist, changeset: changeset)
+    render(conn, "edit.html", dentist: dentist, changeset: changeset, horses: get_horses(), practitioner: get_practitioner())
   end
 
   def update(conn, %{"id" => id, "dentist" => dentist_params}) do
@@ -47,7 +49,7 @@ defmodule MyHorseStable.DentistController do
         |> put_flash(:info, "Dentist updated successfully.")
         |> redirect(to: dentist_path(conn, :show, dentist))
       {:error, changeset} ->
-        render(conn, "edit.html", dentist: dentist, changeset: changeset)
+        render(conn, "edit.html", dentist: dentist, changeset: changeset, horses: get_horses(), practitioner: get_practitioner())
     end
   end
 
@@ -61,5 +63,22 @@ defmodule MyHorseStable.DentistController do
     conn
     |> put_flash(:info, "Dentist deleted successfully.")
     |> redirect(to: dentist_path(conn, :index))
+  end
+
+  ################################
+  @doc """
+    Return all horses
+  """
+  def get_horses() do
+    Repo.all(Horse)
+  end
+
+  @doc """
+      Return dentist practitioner
+  """
+  def get_practitioner() do
+    query = from p in Practitioner,
+            where: p.work_name == "Dentist"
+    Repo.all(query)
   end
 end

@@ -3,7 +3,7 @@ defmodule MyHorseStable.VaccineTest do
 
   alias MyHorseStable.Vaccine
 
-  @valid_attrs %{date: %{day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010}, type_of_vaccine: "some content"}
+  @valid_attrs %{date: %{day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010}, type_of_vaccine: "some content", practitioner_id: 1, horse_id: 1}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

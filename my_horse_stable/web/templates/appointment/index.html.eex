@@ -1,0 +1,36 @@
+<h2>Listing appointments</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date day</th>
+      <th>Name</th>
+      <th>From</th>
+      <th>Done</th>
+      <th>Comment</th>
+      <th>Date appointment</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for appointment <- @appointments do %>
+    <tr>
+      <td><%= appointment.date_day %></td>
+      <td><%= appointment.name %></td>
+      <td><%= appointment.from %></td>
+      <td><%= appointment.done %></td>
+      <td><%= appointment.comment %></td>
+      <td><%= appointment.date_appointment %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: appointment_path(@conn, :show, appointment), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: appointment_path(@conn, :edit, appointment), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: appointment_path(@conn, :delete, appointment), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New appointment", to: appointment_path(@conn, :new) %>

@@ -54,6 +54,9 @@
         <li>
           <%= link "Practitioners", to: practitioner_path(@conn, :index) %>
         </li>
+        <li>
+          <%= link "Appointment", to: appointment_path(@conn, :index) %>
+        </li>
       </ul>
     </div>
   </div>

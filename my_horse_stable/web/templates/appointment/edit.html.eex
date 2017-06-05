@@ -1,0 +1,6 @@
+<h2>Edit appointment</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: appointment_path(@conn, :update, @appointment) %>
+
+<%= link "Back", to: appointment_path(@conn, :index) %>

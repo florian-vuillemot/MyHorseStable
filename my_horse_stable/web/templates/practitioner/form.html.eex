@@ -31,7 +31,7 @@
 
   <div class="form-group">
     <%= label f, :work_name, class: "control-label" %>
-    <%= text_input f, :work_name, class: "form-control" %>
+    <%= select(f, :work_name, ["Veterinary": "Veterinary", "Shoeing": "Shoeing", "Osteopath": "Osteopath", "Dentist": "Dentist"], prompt: "Select", class: "form-control") %>
     <%= error_tag f, :work_name %>
   </div>
 

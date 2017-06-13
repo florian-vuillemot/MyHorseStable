@@ -18,6 +18,12 @@
   </div>
 
   <div class="form-group">
+    <%= label f, :race_id, class: "control-label" %>
+    <%= select(f, :race_id, @races |> Enum.map(fn h -> {h.name, h.id} end), prompt: "Race", class: "form-control") %>
+    <%= error_tag f, :race_id %>
+  </div>
+
+  <div class="form-group">
     <%= label f, :nationality, class: "control-label" %>
     <%= text_input f, :nationality, class: "form-control" %>
     <%= error_tag f, :nationality %>

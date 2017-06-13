@@ -15,7 +15,7 @@ defmodule MyHorseStable.Horse do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :birthday_date, :nationality])
-    |> validate_required([:name, :birthday_date, :nationality])
+    |> cast(params, [:name, :birthday_date, :nationality, :race_id])
+    |> validate_required([:name, :birthday_date, :nationality, :race_id])
   end
 end

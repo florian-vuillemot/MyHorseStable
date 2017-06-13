@@ -22,7 +22,7 @@ defmodule MyHorseStable.DentistController do
       {:ok, _dentist} ->
         conn
         |> put_flash(:info, "Dentist created successfully.")
-        |> redirect(to: dentist_path(conn, :index))
+        |> redirect(to: appointment_path(conn, :new, %{:horse_id => dentist_params["horse_id"], :practitioner_id => dentist_params["practitioner_id"]}))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset, horses: get_horses(), practitioner: get_practitioner())
     end

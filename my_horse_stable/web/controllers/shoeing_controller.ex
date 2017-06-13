@@ -22,7 +22,7 @@ defmodule MyHorseStable.ShoeingController do
       {:ok, _shoeing} ->
         conn
         |> put_flash(:info, "Shoeing created successfully.")
-        |> redirect(to: shoeing_path(conn, :index))
+        |> redirect(to: appointment_path(conn, :new, %{:horse_id => shoeing_params["horse_id"], :practitioner_id => shoeing_params["practitioner_id"]}))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset, horses: get_horses(), practitioner: get_practitioner())
     end

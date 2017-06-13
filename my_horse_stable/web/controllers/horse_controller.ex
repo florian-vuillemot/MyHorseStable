@@ -2,6 +2,7 @@ defmodule MyHorseStable.HorseController do
   use MyHorseStable.Web, :controller
 
   alias MyHorseStable.Horse
+  alias MyHorseStable.HorseRace
 
   def index(conn, _params) do
     horses = Repo.all(Horse)
@@ -10,7 +11,7 @@ defmodule MyHorseStable.HorseController do
 
   def new(conn, _params) do
     changeset = Horse.changeset(%Horse{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, races: get_race())
   end
 
   def create(conn, %{"horse" => horse_params}) do
@@ -22,7 +23,7 @@ defmodule MyHorseStable.HorseController do
         |> put_flash(:info, "Horse created successfully.")
         |> redirect(to: horse_path(conn, :index))
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "new.html", changeset: changeset, races: get_race())
     end
   end
 
@@ -34,7 +35,7 @@ defmodule MyHorseStable.HorseController do
   def edit(conn, %{"id" => id}) do
     horse = Repo.get!(Horse, id)
     changeset = Horse.changeset(horse)
-    render(conn, "edit.html", horse: horse, changeset: changeset)
+    render(conn, "edit.html", horse: horse, changeset: changeset, races: get_race())
   end
 
   def update(conn, %{"id" => id, "horse" => horse_params}) do
@@ -47,7 +48,7 @@ defmodule MyHorseStable.HorseController do
         |> put_flash(:info, "Horse updated successfully.")
         |> redirect(to: horse_path(conn, :show, horse))
       {:error, changeset} ->
-        render(conn, "edit.html", horse: horse, changeset: changeset)
+        render(conn, "edit.html", horse: horse, changeset: changeset, races: get_race())
     end
   end
 
@@ -61,5 +62,11 @@ defmodule MyHorseStable.HorseController do
     conn
     |> put_flash(:info, "Horse deleted successfully.")
     |> redirect(to: horse_path(conn, :index))
+  end
+
+  ################
+
+  def get_race() do
+    Repo.all(HorseRace)
   end
 end

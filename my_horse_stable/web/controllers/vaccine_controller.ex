@@ -22,7 +22,7 @@ defmodule MyHorseStable.VaccineController do
       {:ok, _vaccine} ->
         conn
         |> put_flash(:info, "Vaccine created successfully.")
-        |> redirect(to: vaccine_path(conn, :index))
+        |> redirect(to: appointment_path(conn, :new, %{:horse_id => vaccine_params["horse_id"], :practitioner_id => vaccine_params["practitioner_id"]}))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset, horses: get_horses(), practitioner: get_practitioner())
     end

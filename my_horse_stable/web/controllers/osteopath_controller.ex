@@ -22,7 +22,7 @@ defmodule MyHorseStable.OsteopathController do
       {:ok, _osteopath} ->
         conn
         |> put_flash(:info, "Osteopath created successfully.")
-        |> redirect(to: osteopath_path(conn, :index))
+        |> redirect(to: appointment_path(conn, :new, %{:horse_id => osteopath_params["horse_id"], :practitioner_id => osteopath_params["practitioner_id"]}))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset, horses: get_horses(), practitioner: get_practitioner())
     end

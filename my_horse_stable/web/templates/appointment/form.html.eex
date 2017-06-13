@@ -19,13 +19,13 @@
 
   <div class="form-group">
     <%= label f, :from, class: "control-label" %>
-    <%= text_input f, :from, class: "form-control" %>
+    <%= select(f, :from, @practitioner |> Enum.map(fn h -> {h.name, h.id} end), prompt: "Practitioner", class: "form-control", selected: @practitioner_id) %>
     <%= error_tag f, :from %>
   </div>
 
   <div class="form-group">
     <%= label f, :done, class: "control-label" %>
-    <%= number_input f, :done, class: "form-control" %>
+    <%= select(f, :done, ["To do": "0", "Done": "1"], prompt: "Status", class: "form-control", selected: "0") %>
     <%= error_tag f, :done %>
   </div>
 

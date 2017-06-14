@@ -27,7 +27,7 @@ config :sample, Sample.Mailer,
   adapter: Swoosh.Adapters.Sendgrid,
   api_key: "SG.x.x"
 
-config :my_app, MyApp.Mailer,
+config :my_horse_stable, MyApp.Mailer,
   adapter: Bamboo.SMTPAdapter,
   server: "smtp.domain",
   port: 1025,

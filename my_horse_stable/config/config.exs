@@ -22,17 +22,12 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-# Configures Mailer
-config :sample, Sample.Mailer,
-  adapter: Swoosh.Adapters.Sendgrid,
-  api_key: "SG.x.x"
-
-config :my_horse_stable, MyApp.Mailer,
+config :my_horse_stable, MyHorseStable.Mailer,
   adapter: Bamboo.SMTPAdapter,
-  server: "smtp.domain",
-  port: 1025,
-  username: SYSTEM.get_env("SMTP_USERNAME"),
-  password: SYSTEM.get_env("SMTP_PASSWORD"),
+  server: "smtp-mail.outlook.com", #" smtp.domain",
+  port: 587, #1025,
+  username: "username",
+  password: "pass",
   tls: :if_available, # can be `:always` or `:never`
   ssl: false, # can be `true`
   retries: 1

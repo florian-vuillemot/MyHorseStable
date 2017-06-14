@@ -19,7 +19,7 @@ defmodule MyHorseStable.Mixfile do
   def application do
     [mod: {MyHorseStable, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :bamboo]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,7 +37,9 @@ defmodule MyHorseStable.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:bamboo, "~> 0.7"},
+     {:bamboo_smtp, "~> 1.2.1"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

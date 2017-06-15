@@ -1,0 +1,22 @@
+<h1>Appointments of week:</h1>
+
+<table class="table" style="width:100%;text-align:center">
+  <thead style="width:100%">
+    <tr style="width:100%">
+      <th style="width:10%">Date</th>
+      <th style="width:25%">Name</th>
+      <th style="width:25%">From</th>
+      <th style="width:39%">Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for appointment <- @appointments do %>
+    <tr>
+        <td><%= appointment.date_appointment %></td>
+        <td><%= appointment.name %></td>
+        <td><%= appointment.from %></td>
+        <td><%= appointment.comment %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

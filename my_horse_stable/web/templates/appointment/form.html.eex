@@ -18,9 +18,9 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :from, class: "control-label" %>
-    <%= select(f, :from, @practitioner |> Enum.map(fn h -> {h.name, h.id} end), prompt: "Practitioner", class: "form-control", selected: @practitioner_id) %>
-    <%= error_tag f, :from %>
+    <%= label f, :from_id, class: "control-label" %>
+    <%= select(f, :from_id, @practitioner |> Enum.map(fn h -> {h.name, h.id} end), prompt: "Practitioner", class: "form-control", selected: @practitioner_id) %>
+    <%= error_tag f, :from_id %>
   </div>
 
   <div class="form-group">

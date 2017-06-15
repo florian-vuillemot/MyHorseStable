@@ -6,7 +6,7 @@ defmodule MyHorseStable.AppointmentController do
   alias MyHorseStable.Practitioner
 
   def index(conn, _params) do
-    appointments = Repo.all(Appointment)
+    appointments = Repo.all(Appointment) |> appointment_with_practitioner
     render(conn, "index.html", appointments: appointments)
   end
 
@@ -39,7 +39,7 @@ defmodule MyHorseStable.AppointmentController do
   end
 
   def show(conn, %{"id" => id}) do
-    appointment = Repo.get!(Appointment, id)
+    appointment = Repo.get!(Appointment, id) |> appointment_with_practitioner
     render(conn, "show.html", appointment: appointment)
   end
 
@@ -82,5 +82,24 @@ defmodule MyHorseStable.AppointmentController do
   """
   def get_practitioner() do
     Repo.all(Practitioner)
+  end
+
+  @doc """
+    Return a practitioner name
+  """
+  def get_practitioner_name(appointment) do
+    Repo.get!(Practitioner, appointment.from_id).name
+  end
+
+  @doc """
+    Return appointment(s) with name(s) of practitioner(s)
+  """
+  def appointment_with_practitioner(appointment) do
+    cond do
+      is_list(appointment) ->
+        appointment |> Enum.map(fn p -> %{p | from: get_practitioner_name(p)} end)
+      true ->
+        %{appointment | from: get_practitioner_name(appointment)}
+    end
   end
 end

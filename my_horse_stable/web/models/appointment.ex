@@ -4,10 +4,10 @@ defmodule MyHorseStable.Appointment do
   schema "appointments" do
     field :date_day, Ecto.DateTime
     field :name, :string
-    field :from, :string
     field :done, :integer
     field :comment, :string
     field :date_appointment, Ecto.DateTime
+    belongs_to :from, MyHorseStable.Practitioner
 
     timestamps()
   end
@@ -17,7 +17,7 @@ defmodule MyHorseStable.Appointment do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:date_day, :name, :from, :done, :comment, :date_appointment])
-    |> validate_required([:date_day, :name, :from, :done, :comment, :date_appointment])
+    |> cast(params, [:date_day, :name, :from_id, :done, :comment, :date_appointment])
+    |> validate_required([:date_day, :name, :from_id, :done, :comment, :date_appointment])
   end
 end

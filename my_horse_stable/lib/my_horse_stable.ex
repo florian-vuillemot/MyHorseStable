@@ -14,6 +14,7 @@ defmodule MyHorseStable do
       supervisor(MyHorseStable.Endpoint, []),
       # Start your own worker by calling: MyHorseStable.Worker.start_link(arg1, arg2, arg3)
       # worker(MyHorseStable.Worker, [arg1, arg2, arg3]),
+      worker(MyHorseStable.Activities, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

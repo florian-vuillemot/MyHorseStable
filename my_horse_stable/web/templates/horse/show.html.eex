@@ -26,3 +26,43 @@
 
 <%= link "Edit", to: horse_path(@conn, :edit, @horse) %>
 <%= link "Back", to: horse_path(@conn, :index) %>
+
+<%= if length(@next_appointments) == 0 do %>
+  <p>No futur appointment on this horse</p>
+<%= else %>
+  <h2 style="text-align:center">Next appointments on this horse</h2>
+  <table style="width:100%">
+    <tr>
+      <th>Date</th>
+      <th>Name of appointment</th>
+      <th>Practioner</th>
+    </tr>
+    <%= for app <- @next_appointments do %>
+      <tr>
+        <td><%= app.date_appointment %></td>
+        <td><%= app.name %></td>
+        <td><%= app.practitioner_name %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<%= if length(@appointments) == 0 do %>
+  <p>No appointment on this horse</p>
+<%= else %>
+  <h2 style="text-align:center">Last appointments on this horse</h2>
+  <table style="width:100%">
+    <tr>
+      <th>Date</th>
+      <th>Nature of intervention</th>
+      <th>Practioner</th>
+    </tr>
+    <%= for app <- @appointments do %>
+      <tr>
+        <td><%= app.date %></td>
+        <td><%= app.nature_of_the_intervention %></td>
+        <td><%= app.practitioner_name %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

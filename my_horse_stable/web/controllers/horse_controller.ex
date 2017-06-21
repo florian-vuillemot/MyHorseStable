@@ -37,7 +37,7 @@ defmodule MyHorseStable.HorseController do
   end
 
   def show(conn, %{"id" => id}) do
-    get_appointments(id)
+    IO.inspect get_appointments(id)
     horse = Repo.get!(Horse, id)
     render(conn, "show.html", horse: horse, appointments: get_appointments(id), next_appointments: get_futur_appointments_with_name(id))
   end
@@ -80,42 +80,32 @@ defmodule MyHorseStable.HorseController do
     Repo.all(HorseRace)
   end
 
-  def get_futur_appointments(horse_id) do
+  @doc """
+    Return appointements with name of practioner in each.
+  """
+  def get_futur_appointments_with_name(horse_id) do
     date = Timex.now |> Ecto.DateTime.cast!
-    IO.inspect date
     query = from a in Appointment,
             join: p in assoc(a, :from),
             where: ^date < a.date_appointment or ^date == a.date_appointment,
-            select: %{:name => a.name, :date_appointment => a.date_appointment, :from => p.name}
+            select: %{:name => a.name, :date_appointment => a.date_appointment, :practitioner_name => p.name}
     Repo.all(query)
-  end
-  @doc """
-    Return appointements and add name of practioner in each.
-  """
-  def get_futur_appointments_with_name(horse_id) do
-    get_futur_appointments(horse_id)
-    |> Enum.map(fn a -> Map.put(a, :practitioner_name, Repo.get(Practitioner, horse_id).name) end)
   end
 
   @doc """
-    Return list of element in database.
+    Return list of element with this horse fk in database.
   """
-  renvoyer la liste des éléments ayant cette id
-  def get_list(type, horse_id) do
+  def get_list_appointments(type, horse_id) do
     query = from elem in type,
-            where: elem.horse == horse_id
-    li = Repo.get(query)
-    IO.inspect li
-    case li do
-      nil -> []
-      _ -> [li]
-    end
+            where: elem.horse_id == ^horse_id
+
+    Repo.all(query)
   end
   @doc """
     Return list of element in database and set type in each element.
   """
   def get_list_type_practioner(type, horse_id) do
-    get_list(type, horse_id)
+    get_list_appointments(type, horse_id)
     |> Enum.map(fn v -> Map.put(v, :type, type) end)
     |> Enum.map(fn v -> Map.put(v, :practitioner_name, Repo.get(Practitioner, v.practitioner_id).name) end)
   end
@@ -123,7 +113,7 @@ defmodule MyHorseStable.HorseController do
     Return all appointments
   """
   def get_appointments(horse_id) do
-    get_list(Dentist, horse_id)
+    get_list_type_practioner(Dentist, horse_id)
     |> Enum.concat(get_list_type_practioner(Osteopath, horse_id))
     |> Enum.concat(get_list_type_practioner(Shoeing, horse_id))
     |> Enum.concat(

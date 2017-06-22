@@ -7,7 +7,7 @@
 
   <div class="form-group">
     <%= label f, :date, class: "control-label" %>
-    <%= datetime_select f, :date, class: "form-control" %>
+    <%= text_input f, :date, class: "form-control", id: "date" %>
     <%= error_tag f, :date %>
   </div>
 
@@ -30,6 +30,10 @@
   </div>
 
   <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+    <%= submit "Submit", class: "btn btn-primary", id: "submit" %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+    date_manager("date");
+</script>

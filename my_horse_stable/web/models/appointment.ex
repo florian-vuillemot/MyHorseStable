@@ -2,7 +2,6 @@ defmodule MyHorseStable.Appointment do
   use MyHorseStable.Web, :model
 
   schema "appointments" do
-    field :date_day, Ecto.DateTime
     field :name, :string
     field :done, :integer
     field :comment, :string
@@ -17,7 +16,7 @@ defmodule MyHorseStable.Appointment do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:date_day, :name, :from_id, :done, :comment, :date_appointment])
-    |> validate_required([:date_day, :name, :from_id, :done, :comment, :date_appointment])
+    |> cast(params, [:name, :from_id, :done, :comment, :date_appointment])
+    |> validate_required([:name, :from_id, :done, :comment, :date_appointment])
   end
 end

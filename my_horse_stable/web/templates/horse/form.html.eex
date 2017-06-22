@@ -13,7 +13,7 @@
 
   <div class="form-group">
     <%= label f, :birthday_date, class: "control-label" %>
-    <%= datetime_select f, :birthday_date, class: "form-control" %>
+    <%= text_input f, :birthday_date, class: "form-control", id: "birthday_date" %>
     <%= error_tag f, :birthday_date %>
   </div>
 
@@ -30,6 +30,11 @@
   </div>
 
   <div class="form-group">
-    <%= submit "Submit", class: "btn btn-primary" %>
+    <%= submit "Submit", class: "btn btn-primary", id: "submit" %>
   </div>
 <% end %>
+
+
+<script type="text/javascript">
+    date_manager("birthday_date");
+</script>

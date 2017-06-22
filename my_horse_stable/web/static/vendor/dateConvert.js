@@ -15,7 +15,7 @@ function convertStringToNaiveDate(str)
     const month = tabDate[1];
     const year = tabDate[2];
 
-    return year + "-" + month + "-" + day + " 00:00:00";
+    return year + "-" + day + "-" + month + " 00:00:00";
 }
 
 // Get a naive date and convert in date for user.
@@ -29,9 +29,33 @@ function convertNaiveDateToString(str)
         return str;
     }
 
-    const day = tabDate[2];
-    const month = tabDate[1];
+    const day = tabDate[1];
+    const month = tabDate[2];
     const year = tabDate[0];
 
     return day + "/" + month + "/" + year;
+}
+
+
+function date_manager(id_date, name_submit = "submit"){
+    let date_to_manage = document.getElementById(id_date);
+    date_to_manage.value = convertNaiveDateToString(date_to_manage.value);
+
+    let submit_event = document.getElementById(name_submit);
+
+    function validateForm(){
+        date_to_manage.value = convertStringToNaiveDate(date_to_manage.value);
+    }
+
+    submit_event.addEventListener('click', validateForm, false);
+
+    $(function() {
+        $(date_to_manage).daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true
+            },
+            function(start, end, label) {
+                console.log("ok");
+            });
+    });
 }

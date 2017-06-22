@@ -46,7 +46,7 @@ defmodule MyHorseStable.AppointmentController do
   def edit(conn, %{"id" => id}) do
     appointment = Repo.get!(Appointment, id)
     changeset = Appointment.changeset(appointment)
-    render(conn, "edit.html", appointment: appointment, changeset: changeset, practitioner: get_practitioner(), practitioner_id: appointment.from)
+    render(conn, "edit.html", appointment: appointment, changeset: changeset, practitioner: get_practitioner(), practitioner_id: appointment.from_id)
   end
 
   def update(conn, %{"id" => id, "appointment" => appointment_params}) do

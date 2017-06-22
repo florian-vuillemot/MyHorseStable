@@ -3,7 +3,6 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Date day</th>
       <th>Name</th>
       <th>From</th>
       <th>Done</th>
@@ -16,7 +15,6 @@
   <tbody>
 <%= for appointment <- @appointments do %>
     <tr>
-      <td><%= appointment.date_day %></td>
       <td><%= appointment.name %></td>
       <td><%= appointment.from %></td>
       <td><%= appointment.done %></td>

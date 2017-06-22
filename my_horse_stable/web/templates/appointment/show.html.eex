@@ -3,11 +3,6 @@
 <ul>
 
   <li>
-    <strong>Date day:</strong>
-    <%= @appointment.date_day %>
-  </li>
-
-  <li>
     <strong>Name:</strong>
     <%= @appointment.name %>
   </li>
